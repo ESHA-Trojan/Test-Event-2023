@@ -1,0 +1,6 @@
+services:
+  socrates:
+    build: .
+    ports:
+      - 5001:5000
+    privileged: true

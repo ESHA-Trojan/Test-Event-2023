@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<title>Narcissus' Projects</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+		<script>
+			$.get("projects", result => {
+				var split = result.split("\n");
+				for (i in split) {
+					var name = split[i];
+					if (name !== "") {
+						console.log("Name: " + name);
+						$("#project_list").append("<li><a href=\"#project_view\" onclick=\"showProject('" + name + "')\">" + name + "</a></li>");
+					}
+				}
+			});
+
+			function showProject(project) {
+				$.get("project?name=" + project, result => {
+					$("#project_view").html(result);
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<p>
+			Hello user, and welcome to the greatest project overview you will ever find.
+			This site holds projects of utmost importance to mankind. You will find a list of these below.
+		</p>
+		
+		<ul id="project_list">
+		</ul>
+		
+		<hr>
+
+		<div id="project_view"></div>
+
+		<hr>
+
+		<footer>
+			<i>
+				Made with
+				<!-- <a href="../netbeans.html">NetBeans</a>  this is no longer a sub-site -->
+				NetBeans
+			</i>
+		</footer>
+	</body>
+</html>

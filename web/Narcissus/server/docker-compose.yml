@@ -1,0 +1,5 @@
+services:
+  narcissus:
+    build: .
+    ports:
+      - 5003:80
